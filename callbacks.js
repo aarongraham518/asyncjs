@@ -3,7 +3,7 @@ const posts = [
     {title: 'Post Two', body: 'This is post Two'}
 ];
 
-function getPost(){
+function getPosts(){
     //using setTime to mimic retrieval time from a server
     setTimeout(() => {
         let output = '';
@@ -14,13 +14,12 @@ function getPost(){
     }, 1000);
 }
 
-function createPost(post){
+function createPost(post, callback){
     setTimeout(() =>{
         posts.push(post);
+        callback();
     }, 2000);
 }
 
 
-getPost();
-
-createPost({title: 'Post Three', body: 'This is ost three'});
+createPost({title: 'Post Three', body: 'This is ost three'}, getPosts);
